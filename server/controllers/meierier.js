@@ -10,12 +10,8 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
 	var newMeieri = req.body;
-
 	newMeieri.categories = [];
-
 	var meieri = new Meieri(newMeieri);
-
-	console.log(meieri);
 
 	meieri.save(function(err) {
 		if (err) return next(err);
