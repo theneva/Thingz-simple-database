@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="thingzSimpleDatabase">
+<head>
+	<meta charset="UTF-8">
+	<title>Thingz simple database</title>
+
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+</head>
+<body ng-controller="MeierierController">
+
+<div class="container">
+	<h1>Meierier</h1>
+	<table class="table">
+		<tr>
+			<th>Name</th>
+			<th>Categories</th>
+		</tr>
+		<tr>
+			<td>
+				<form ng-submit="save()">
+					<input type="text" class="form-control" placeholder="Name" ng-model="newMeieri.name"/>
+				</form>
+			</td>
+		</tr>
+		<tr ng-repeat="meieri in meierier">
+			<td>{{meieri.name}}</td>
+			<td>
+				<span ng-if="meieri.categories.length === 0">No categories</span>
+				<ul ng-repeat="category in meieri.categories">
+					<li>{{category}}</li>
+				</ul>
+			</td>
+			<td>
+				<button class="btn btn-danger col-xs-6" ng-click="delete(meieri._id)">Delete</button>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<script src="node_modules/lodash/index.js"></script>
+<script src="node_modules/angular/angular.js"></script>
+<script src="controllers.js"></script>
+</body>
+</html>
